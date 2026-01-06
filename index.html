@@ -1,1 +1,281 @@
-429: Too Many Requests
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Bela Pizza - 2026</title>
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; transition: all 0.3s ease; overflow-x: hidden; background-color: #fff; }
+        header { display: flex; justify-content: flex-end; padding: 15px; gap: 15px; align-items: center; border-bottom: 1px solid #eee; }
+        header a { text-decoration: none; color: #000; font-size: 13px; cursor: pointer; font-weight: 500; }
+        header a:hover { color: #e74c3c; }
+        .user-profile { display: none; align-items: center; gap: 10px; cursor: pointer; }
+        .avatar { width: 32px; height: 32px; background: #e74c3c; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; }
+        .btn-login { background-color: #27ae60; color: white; border: none; padding: 9px 23px; border-radius: 4px; font-weight: bold; cursor: pointer; }
+        main { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 80vh; transition: all 0.5s ease; }
+        .logo-container { display: flex; align-items: center; gap: 20px; margin-bottom: 30px; cursor: pointer; user-select: none; }
+        .logo-text { font-size: 70px; font-weight: bold; letter-spacing: -2px; line-height: 0.9; }
+        .red { color: #e74c3c; } .gold { color: #f1c40f; } .green { color: #27ae60; }
+        .pizza-css { background-color: #f5deb0; border-radius: 50%; position: relative; border: 5px solid #c29b61; box-shadow: 0 5px 15px rgba(0,0,0,0.1); flex-shrink: 0; }
+        .mio { background-color: red; border-radius: 50%; position: absolute; border: 1px solid #b30000; }
+        .bolinhapreta { background-color: #333; border-radius: 50%; position: absolute; }
+        .queijo { background-color: #f1c232; position: absolute; border-radius: 4px; }
+        .search-container { width: 90%; max-width: 584px; border: 1px solid #dfe1e5; border-radius: 24px; padding: 12px 20px; display: flex; align-items: center; }
+        .search-container input { flex: 1; border: none; outline: none; font-size: 16px; padding-left: 10px; }
+        .buttons { margin-top: 30px; display: flex; gap: 12px; }
+        .buttons button { background-color: #f8f9fa; border: 1px solid #f8f9fa; border-radius: 4px; padding: 10px 16px; cursor: pointer; }
+        .view-section { display: none; flex-direction: column; align-items: center; padding: 40px 20px; animation: fadeIn 0.5s; text-align: center; }
+        .pizza-card { margin-bottom: 40px; display: flex; flex-direction: column; align-items: center; width: 100%; }
+        .pizza-card h2 { color: #e74c3c; margin: 15px 0; font-size: 24px; }
+        .btn-voltar { margin-top: 30px; padding: 12px 25px; background: #e74c3c; color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; }
+        .dic-box { border: 1px solid #dfe1e5; padding: 30px; border-radius: 12px; background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.05); max-width: 500px; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <a onclick="mostrarCardapioSimples()">Cardápio</a> 
+    <a onclick="mostrarNossasPizzasCompleto()">Nossas Pizzas</a>
+    <button class="btn-login" id="login-trigger">Entrar</button>
+    <div class="user-profile" id="user-info">
+        <span id="user-email" style="font-size: 12px; color: #555;"></span>
+        <div class="avatar" id="user-initial">L</div>
+    </div>
+</header>
+
+<main id="view-home">
+    <div class="logo-container" onclick="location.reload()">
+        <div class="pizza-css" style="width: 100px; height: 100px;">
+            <div class="mio" style="width:18px; height:18px; top:12px; left:25px;"></div>
+            <div class="mio" style="width:18px; height:18px; top:12px; right:20px;"></div>
+            <div class="mio" style="width:18px; height:18px; bottom:18px; left:18px;"></div>
+            <div class="mio" style="width:18px; height:18px; bottom:12px; right:25px;"></div>
+            <div class="queijo" style="width:22px; height:22px; top:38px; left:15px;"></div>
+            <div class="queijo" style="width:22px; height:22px; top:38px; right:15px;"></div>
+            <div class="bolinhapreta" style="width:5px; height:5px; top:8px; left:48px;"></div>
+            <div class="bolinhapreta" style="width:5px; height:5px; bottom:8px; left:48px;"></div>
+            <div class="bolinhapreta" style="width:5px; height:5px; top:48px; left:48px;"></div>
+            <div class="bolinhapreta" style="width:5px; height:5px; top:28px; left:35px;"></div>
+            <div class="bolinhapreta" style="width:5px; height:5px; top:28px; right:35px;"></div>
+            <div class="bolinhapreta" style="width:5px; height:5px; bottom:30px; left:30px;"></div>
+        </div>
+        <div class="logo-text">
+            <span class="red">La</span> <span class="gold">Bela</span><br><span class="green">Pizza</span>
+        </div>
+    </div>
+    <div class="search-container">
+        <span>🔍</span>
+        <input type="text" id="search-input" placeholder="Pesquise uma pizza ou pergunte algo..." autofocus>
+    </div>
+    <div class="buttons">
+        <button id="btn-search">Pesquisa La Bela Pizza</button>
+        <button id="btn-lucky">Pizza Voadora</button>
+    </div>
+</main>
+
+<section id="view-listagem" class="view-section">
+    <div id="container-lista"></div>
+    <button class="btn-voltar" onclick="voltarParaHome()">Voltar para a busca</button>
+</section>
+
+<section id="view-resultado" class="view-section"></section>
+
+<script>
+    // DICIONÁRIO CORRIGIDO (COM VÍRGULAS E ASPAS CERTAS)
+    const dicionario = {
+        "o que é html": "HTML é a base da sua pizza: a massa que estrutura tudo!",
+        "o que é css": "CSS é o recheio e a aparência: o que deixa a pizza bonita e apetitosa.",
+        "o que é javascript": "JavaScript é o motoboy: o que traz movimento e ação para a entrega.",
+        "quem é lucas hoshino": "Lucas Hoshino é o mestre pizzaiolo da programação de 13 anos!",
+        "isso é um google": "Sim, um Google das pizzas: LBP - La Bela Pizza!",
+        "pizza": "Aqui temos 3 tipos de pizza: La Pizza de Carne, La Pizza de Queijo e La Bela Pizza. Digite o nome de uma para saber mais.",
+        "quem é o dono": "O mestre pizzaiolo e programador Lucas Hoshino!",
+        "qual a melhor pizza": "A La Clássica Bela, com 6 azeitonas e muito cheddar!",
+        "onde fica a pizzaria": "Na capital da Portuécia, o país oficial da pizza.",
+        "qual o site oficial": "Você já está nele, mas o repositório é https://369happyl.github.io/Pizza-furtiva/",
+        "horario de funcionamento": "Aberto 24h para quem tem fome de pizza e de código!",
+        "tem delivery": "Sim! O nosso motoboy JavaScript entrega em tempo real.",
+        "aceita pix": "Com certeza! Na Portuécia aceitamos Pix, Crédito e Linhas de Código.",
+        "quem inventou a pizza": "Os egípcios e gregos começaram, mas os italianos de Nápoles criaram a perfeição.",
+        "qual a pizza mais cara do mundo": "A Louis XIII, que custa 12 mil dólares! Prefiro a nossa.",
+        "pizza é saudavel": "Com certeza! Tem carboidrato para energia e queijo para a felicidade.",
+        "qual o sabor mais pedido": "No Brasil é Calabresa, mas aqui na La Bela a Classica domina!",
+        "pode comer pizza no café da manhã": "É a melhor hora para comer aquela fatia que sobrou de ontem!",
+        "qual a maior pizza do mundo": "Foi feita em Roma e tinha mais de 1.200 metros quadrados!",
+        "dia da pizza": "No Brasil, comemoramos no dia 10 de julho.",
+        "qual o segredo da massa": "Muita paciência, farinha de qualidade e o toque de cheddar e molho.",
+        "pizza com abacaxi pode": "Na Portuécia a gente não julga, mas a polícia da pizza está de olho!",
+        "azeitona com caroço ou sem": "Aqui na La Bela usamos as melhores, sempre combinando com o recheio.",
+        "o que vai na margherita": "Molho de tomate, manjericão fresco e muita muçarela.",
+        "melhor queijo para pizza": "Muçarela é o padrão, mas o Cheddar da La Bela é especial.",
+        "como deixar a borda crocante": "Forno muito quente e um pouco de azeite na finalização.",
+        "o que é pepperoni": "Um salame picante que é o primo rebelde da nossa calabresa.",
+        "pode colocar ketchup na pizza": "Isso gera guerra civil na Portuécia! Mas o cliente manda.",
+        "você é um robo": "Sou o assistente da La Bela Pizza, quase um pizzaiolo digital.",
+        "me da uma pizza gratis": "Só para quem encontrar o 'Easter Egg' escondido no código!",
+        "como ser um mestre pizzaiolo": "Estude JS de dia e asse pizzas de noite.",
+        "estudar ou comer pizza": "Por que não os dois ao mesmo tempo?",
+        "qual a pizza favorita do batman": "A 'Dark Knight' com muito queijo das trevas.",
+        "qual a pizza favorita do homem aranha": "Qualquer uma, desde que a entrega não atrase!",
+        "pizza de chocolate existe": "Sim, é a sobremesa oficial dos programadores após o deploy.",
+        "o que significa la bela": "Significa 'A Bela' em italiano. A pizza mais bonita da web.",
+        "quantas fatias tem uma pizza": "O padrão são 8, mas se você estiver com fome, pode ser 1!",
+        "qual the melhor navegador": "Aquele que renderiza o CSS da La Bela Pizza sem erros.",
+        "quem criou o javascript": "Brendan Eich, em apenas 10 dias! Ele devia estar comendo muita pizza.",
+        "o que é github": "Onde o Lucas guarda as receitas secretas do site.",
+        "qual a cor da pizza": "Dourada por fora, vermelha por dentro e deliciosa no total.",
+        "pizza de frango com catupiry": "Um clássico brasileiro que nunca decepciona.",
+        "como fazer pizza no microondas": "Poder você pode, mas um mestre da Portuécia não recomenda!",
+        "qual o segredo do queijo derretido": "A temperatura exata do seu navegador.",
+        "a pizza voadora é real": "Clique no botão 'Pizza Voadora' e descubra o mistério!",
+        "o que é o link furtivo": "Uma passagem secreta para as pizzas que ninguém viu ainda.",
+        "quantos anos tem o lucas": "O mestre Lucas tem 13 anos e já programa melhor que muito adulto!",
+        "final do dicionario": "Fim das perguntas! Agora vai lá e come uma pizza!",
+           "quem é o dono": "O mestre pizzaiolo e programador Lucas Hoshino!",
+    "qual a melhor pizza": "A La Clássica Bela, com 6 azeitonas e muito cheddar!",
+    "onde fica a pizzaria": "Na capital da Portuécia, o país oficial da pizza.",
+    "qual o site oficial": "Você já está nele, mas o repositório é https://369happyl.github.io/Pizza-furtiva/",
+    "horario de funcionamento": "Aberto 24h para quem tem fome de pizza e de código!",
+    "tem delivery": "Sim! O nosso motoboy JavaScript entrega em tempo real.",
+    "aceita pix": "Com certeza! Na Portuécia aceitamos Pix, Crédito e Linhas de Código.",
+
+    // CURIOSIDADES SOBRE PIZZA
+    "quem inventou a pizza": "Os egípcios e gregos começaram, mas os italianos de Nápoles criaram a perfeição.",
+    "qual a pizza mais cara do mundo": "A Louis XIII, que custa 12 mil dólares! Prefiro a nossa.",
+    "pizza é saudavel": "Com certeza! Tem carboidrato para energia e queijo para a felicidade.",
+    "qual o sabor mais pedido": "No Brasil é Calabresa, mas aqui na La Bela a Classica domina!",
+    "pode comer pizza no café da manhã": "É a melhor hora para comer aquela fatia que sobrou de ontem!",
+    "qual a maior pizza do mundo": "Foi feita em Roma e tinha mais de 1.200 metros quadrados!",
+    "dia da pizza": "No Brasil, comemoramos no dia 10 de julho.",
+
+    // INGREDIENTES E RECEITAS
+    "qual o segredo da massa": "Muita paciência, farinha de qualidade e o toque do Lucas.",
+    "pizza com abacaxi pode": "Na Portuécia a gente não julga, mas a polícia da pizza está de olho!",
+    "azeitona com caroço ou sem": "Aqui na La Bela usamos as melhores, sempre combinando com o recheio.",
+    "o que vai na margherita": "Molho de tomate, manjericão fresco e muita muçarela.",
+    "melhor queijo para pizza": "Muçarela é o padrão, mas o Cheddar da La Bela é especial.",
+    "como deixar a borda crocante": "Forno muito quente e um pouco de azeite na finalização.",
+    "o que é pepperoni": "Um salame picante que é o primo rebelde da nossa calabresa.",
+    "pode colocar ketchup na pizza": "Isso gera guerra civil na Portuécia! Mas o cliente manda.",
+
+    // PROGRAMAÇÃO (Dicionário que você já tinha + extras)
+    "o que é html": "É a massa da pizza: a estrutura que segura tudo.",
+    "o que é css": "É o recheio e a borda recheada: o que deixa tudo bonito.",
+    "o que é javascript": "É o motoboy: faz a pizza chegar e as coisas funcionarem.",
+    "o que é python": "Uma cobra que tenta fazer pizza, mas prefere automação.",
+    "o que é banco de dados": "A geladeira onde guardamos todos os ingredientes do site.",
+    "o que é um bug": "É quando você pede calabresa e vem abacaxi.",
+    "quem é lucas": "Um gênio de 13 anos que domina HTML, CSS e JS.",
+    "o que é portuécia": "O país onde a programação e a pizza vivem em harmonia.",
+
+    // PERGUNTAS ALEATÓRIAS/ZUEIRA
+    "você é um robo": "Sou o assistente da La Bela Pizza, quase um pizzaiolo digital.",
+    "me da uma pizza gratis": "Só para quem encontrar o 'Easter Egg' escondido no código!",
+    "como ser um mestre pizzaiolo": "Estude JS de dia e asse pizzas de noite.",
+    "estudar ou comer pizza": "Por que não os dois ao mesmo tempo?",
+    "qual a pizza favorita do batman": "A 'Dark Knight' com muito queijo das trevas.",
+    "qual a pizza favorita do homem aranha": "Qualquer uma, desde que a entrega não atrase!",
+    "pizza de chocolate existe": "Sim, é a sobremesa oficial dos programadores após o deploy.",
+    "o que significa la bela": "Significa 'A Bela' em italiano. A pizza mais bonita da web.",
+    "quantas fatias tem uma pizza": "O padrão são 8, mas se você estiver com fome, pode ser 1!",
+    "qual o melhor navegador": "Aquele que renderiza o CSS da La Bela Pizza sem erros.",
+    "quem criou o javascript": "Brendan Eich, em apenas 10 dias! Ele devia estar comendo muita pizza.",
+    "o que é github": "Onde o Lucas guarda as receitas secretas do site.",
+    "qual a cor da pizza": "Dourada por fora, vermelha por dentro e deliciosa no total.",
+    "pizza de frango com catupiry": "Um clássico brasileiro que nunca decepciona.",
+    "como fazer pizza no microondas": "Poder você pode, mas um mestre da Portuécia não recomenda!",
+    "qual o segredo do queijo derretido": "A temperatura exata do seu navegador.",
+    "a pizza voadora é real": "Clique no botão 'Pizza Voadora' e descubra o mistério!",
+    "o que é o link furtivo": "Uma passagem secreta para as pizzas que ninguém viu ainda.",
+    "quantos anos tem o lucas": "O mestre Lucas tem 13 anos e já programa melhor que muito adulto!",
+    "final do dicionario": "Fim das perguntas! Agora vai lá e come uma pizza!"
+
+    };
+
+    const modelosPizza = {
+        classica: `<div class="pizza-css" style="width:180px;height:180px;"><div class="mio" style="width:35px;height:35px;top:25px;left:45px;"></div><div class="mio" style="width:35px;height:35px;top:25px;right:40px;"></div><div class="mio" style="width:35px;height:35px;bottom:35px;left:40px;"></div><div class="mio" style="width:35px;height:35px;bottom:25px;right:45px;"></div><div class="queijo" style="width:40px;height:40px;top:70px;left:25px;"></div><div class="queijo" style="width:40px;height:40px;top:70px;right:25px;"></div><div class="bolinhapreta" style="width:8px;height:8px;top:15px;left:86px;"></div><div class="bolinhapreta" style="width:8px;height:8px;bottom:15px;left:86px;"></div><div class="bolinhapreta" style="width:8px;height:8px;top:86px;left:86px;"></div><div class="bolinhapreta" style="width:8px;height:8px;top:50px;left:55px;"></div><div class="bolinhapreta" style="width:8px;height:8px;bottom:55px;right:55px;"></div><div class="bolinhapreta" style="width:8px;height:8px;top:55px;right:55px;"></div></div>`,
+        carne: `<div class="pizza-css" style="width:180px;height:180px;"><div class="mio" style="width:40px;height:40px;top:25px;left:40px;"></div><div class="mio" style="width:40px;height:40px;top:25px;right:40px;"></div><div class="mio" style="width:40px;height:40px;bottom:30px;left:40px;"></div><div class="mio" style="width:40px;height:40px;bottom:30px;right:40px;"></div></div>`,
+        queijo: `<div class="pizza-css" style="width:180px;height:180px;"><div class="queijo" style="width:60px;height:60px;top:30px;left:30px;transform:rotate(-10deg);"></div><div class="queijo" style="width:60px;height:60px;bottom:40px;right:40px;transform:rotate(15deg);"></div><div class="bolinhapreta" style="width:12px;height:12px;top:54px;left:54px;z-index:2;"></div><div class="bolinhapreta" style="width:12px;height:12px;bottom:64px;right:64px;z-index:2;"></div><div class="mio" style="width:35px;height:35px;top:100px;right:20px;"></div><div class="mio" style="width:35px;height:35px;bottom:100px;left:20px;"></div></div>`
+    };
+
+    const receitasPizzas = {
+        classica: "Massa de pizza artesanal, molho de tomate fresco, 4 fatias de calabresa, 6 azeitonas pretas e 2 fatias de queijo cheddar.",
+        carne: "Massa crocante, molho de tomate e uma cobertura generosa de 4 calabresas premium.",
+        queijo: "Massa macia, 2 queijos cheddar derretidos, 1 azeitona em cada queijo e 2 fatias de calabresa."
+    };
+
+    function voltarParaHome() {
+        document.getElementById('view-home').style.display = 'flex';
+        document.getElementById('view-listagem').style.display = 'none';
+        document.getElementById('view-resultado').style.display = 'none';
+    }
+
+    function mostrarCardapioSimples() {
+        document.getElementById('view-home').style.display = 'none';
+        const container = document.getElementById('container-lista');
+        container.innerHTML = [
+            {n: "La Clássica Bela", h: modelosPizza.classica},
+            {n: "La Pizza de Carne", h: modelosPizza.carne},
+            {n: "La Pizza de Queijo", h: modelosPizza.queijo}
+        ].map(p => `<div class="pizza-card"><h2>${p.n}</h2>${p.h}</div>`).join('');
+        document.getElementById('view-listagem').style.display = 'flex';
+    }
+
+    function mostrarNossasPizzasCompleto() {
+        document.getElementById('view-home').style.display = 'none';
+        const container = document.getElementById('container-lista');
+        container.innerHTML = [
+            {n: "La Clássica Bela", h: modelosPizza.classica, r: receitasPizzas.classica},
+            {n: "La Pizza de Carne", h: modelosPizza.carne, r: receitasPizzas.carne},
+            {n: "La Pizza de Queijo", h: modelosPizza.queijo, r: receitasPizzas.queijo}
+        ].map(p => `<div class="pizza-card"><h2>${p.n}</h2>${p.h}<p style="color:#555; max-width:400px; margin-top:10px;"><strong>Receita:</strong> ${p.r}</p></div>`).join('');
+        document.getElementById('view-listagem').style.display = 'flex';
+    }
+
+    function realizarBusca() {
+        const query = document.getElementById('search-input').value.toLowerCase().trim();
+        const viewRes = document.getElementById('view-resultado');
+        if(!query) return;
+
+        document.getElementById('view-home').style.display = 'none';
+        viewRes.style.display = 'flex';
+
+        if (query === "la bela pizza" || query === "la classica bela" || query === "la clássica bela") {
+            viewRes.innerHTML = `<h2>La Clássica Bela</h2> ${modelosPizza.classica} <button class="btn-voltar" onclick="voltarParaHome()">Voltar</button>`;
+        } else if (query === "la pizza de carne") {
+            viewRes.innerHTML = `<h2>La Pizza de Carne</h2> ${modelosPizza.carne} <button class="btn-voltar" onclick="voltarParaHome()">Voltar</button>`;
+        } else if (query === "la pizza de queijo") {
+            viewRes.innerHTML = `<h2>La Pizza de Queijo</h2> ${modelosPizza.queijo} <button class="btn-voltar" onclick="voltarParaHome()">Voltar</button>`;
+        } else if (dicionario[query]) {
+            viewRes.innerHTML = `<div class="dic-box"><h2 style="color:#e74c3c">${query.toUpperCase()}</h2><p style="font-size:18px">${dicionario[query]}</p></div><button class="btn-voltar" onclick="voltarParaHome()">Voltar</button>`;
+        } else {
+            window.location.href = "https://369happyl.github.io/Pizza-furtiva/";
+        }
+    }
+
+    document.getElementById('btn-search').onclick = realizarBusca;
+    document.getElementById('search-input').onkeypress = (e) => { if (e.key === 'Enter') realizarBusca(); };
+    document.getElementById('btn-lucky').onclick = () => window.location.href = "https://369happyl.github.io/Pizza-voadora/";
+
+    function checkLogin() {
+        const email = localStorage.getItem('userEmail');
+        if (email) {
+            document.getElementById('login-trigger').style.display = 'none';
+            const info = document.getElementById('user-info');
+            info.style.display = 'flex';
+            document.getElementById('user-email').textContent = email;
+            document.getElementById('user-initial').textContent = email[0].toUpperCase();
+        }
+    }
+    document.getElementById('login-trigger').onclick = () => {
+        const email = prompt("E-mail:");
+        if (email && email.includes("@")) {
+            localStorage.setItem('userEmail', email);
+            checkLogin();
+        }
+    };
+    checkLogin();
+</script>
+</body>
+</html>
