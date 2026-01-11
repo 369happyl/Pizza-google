@@ -30,6 +30,9 @@
         .btn-voltar { margin-top: 30px; padding: 12px 25px; background: #e74c3c; color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; }
         .dic-box { border: 1px solid #dfe1e5; padding: 30px; border-radius: 12px; background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.05); max-width: 500px; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .pizza-css:hover {
+    transform: scale(1.2) rotate(15deg); /* aumenta 20% e gira 15° */
+        }
     </style>
 </head>
 <body>
@@ -45,20 +48,21 @@
 </header>
 <main id="view-home">
     <div class="logo-container" onclick="location.reload()">
-        <div class="pizza-css" style="width: 100px; height: 100px;">
-            <div class="mio" style="width:18px; height:18px; top:12px; left:25px;"></div>
-            <div class="mio" style="width:18px; height:18px; top:12px; right:20px;"></div>
-            <div class="mio" style="width:18px; height:18px; bottom:18px; left:18px;"></div>
-            <div class="mio" style="width:18px; height:18px; bottom:12px; right:25px;"></div>
-            <div class="queijo" style="width:22px; height:22px; top:38px; left:15px;"></div>
-            <div class="queijo" style="width:22px; height:22px; top:38px; right:15px;"></div>
-            <div class="bolinhapreta" style="width:5px; height:5px; top:8px; left:48px;"></div>
-            <div class="bolinhapreta" style="width:5px; height:5px; bottom:8px; left:48px;"></div>
-            <div class="bolinhapreta" style="width:5px; height:5px; top:48px; left:48px;"></div>
-            <div class="bolinhapreta" style="width:5px; height:5px; top:28px; left:35px;"></div>
-            <div class="bolinhapreta" style="width:5px; height:5px; top:28px; right:35px;"></div>
-            <div class="bolinhapreta" style="width:5px; height:5px; bottom:30px; left:30px;"></div>
-        </div>
+    <div class="pizza-css" style="width: 100px; height: 100px; transition: all 0.3s ease;">
+        <div class="mio" style="width:18px; height:18px; top:12px; left:25px;"></div>
+        <div class="mio" style="width:18px; height:18px; top:12px; right:20px;"></div>
+        <div class="mio" style="width:18px; height:18px; bottom:18px; left:18px;"></div>
+        <div class="mio" style="width:18px; height:18px; bottom:12px; right:25px;"></div>
+        <div class="queijo" style="width:22px; height:22px; top:38px; left:15px;"></div>
+        <div class="queijo" style="width:22px; height:22px; top:38px; right:15px;"></div>
+        <div class="bolinhapreta" style="width:5px; height:5px; top:8px; left:48px;"></div>
+        <div class="bolinhapreta" style="width:5px; height:5px; bottom:8px; left:48px;"></div>
+        <div class="bolinhapreta" style="width:5px; height:5px; top:48px; left:48px;"></div>
+        <div class="bolinhapreta" style="width:5px; height:5px; top:28px; left:35px;"></div>
+        <div class="bolinhapreta" style="width:5px; height:5px; top:28px; right:35px;"></div>
+        <div class="bolinhapreta" style="width:5px; height:5px; bottom:30px; left:30px;"></div>
+    </div>
+    
         <div class="logo-text">
             <span class="red">La</span> <span class="gold">Bela</span><br><span class="green">Pizza</span>
         </div>
