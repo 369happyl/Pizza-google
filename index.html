@@ -2401,10 +2401,20 @@
         if (respostaEncontrada) {
             viewRes.innerHTML = `<div class="dic-box"><h2 style="color:#e74c3c">${input.toUpperCase()}</h2><p style="font-size:18px">${respostaEncontrada}</p></div><button class="btn-voltar" onclick="voltarParaHome()">Voltar</button>`;
         } else {
-            // Se não encontrar nada, vai para o link furtivo
-            window.location.href = "https://369happyl.github.io/Pizza-furtiva/";
-        }
+    // Cria elemento se não existir
+    let divResposta = document.getElementById("resposta");
+    if (!divResposta) {
+        divResposta = document.createElement("div");
+        divResposta.id = "resposta";
+        // opcional: estilo rápido
+        divResposta.style.marginTop = "20px";
+        divResposta.style.fontSize = "18px";
+        divResposta.style.color = "#ff0000";
+        document.body.appendChild(divResposta); // adiciona no final da página
     }
+
+    divResposta.innerText = "🤔🍕 Hmmm… essa pergunta ainda não tá no meu cardápio.";
+        }
 
     // EVENTOS
     document.getElementById('btn-search').onclick = realizarBusca;
