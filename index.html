@@ -30,29 +30,28 @@
         .btn-voltar { margin-top: 30px; padding: 12px 25px; background: #e74c3c; color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: bold;}
         .dic-box { border: 1px solid #dfe1e5; padding: 30px; border-radius: 12px; background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.05); max-width: 500px; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        /* Continua a pizza girando e flutuando */
 
 
-/* Olhos escondidos por padrão */
-/* Quando clica, trocamos a animação para uma que já nasce grande */
-.pizza-css:active {
-    animation: girar-flutuar-grande 2s linear infinite !important;
-    box-shadow: 0 30px 50px rgba(0,0,0,0.4);
-    z-index: 100;
+
+.pizza-css:hover {
+    animation: girar-flutuar 2s linear infinite;
+    box-shadow: 0 20px 30px rgba(0,0,0,0.3);
 }
 
-/* Nova animação: igual à original, mas com scale(2.5) em todos os passos */
-@keyframes girar-flutuar-grande {
+/* Animação de giro + leve levitação */
+@keyframes girar-flutuar {
     0% {
-        transform: scale(2.5) rotate(0deg) translateY(0);
+        transform: rotate(0deg) translateY(0);
     }
     50% {
-        transform: scale(2.5) rotate(180deg) translateY(-10px);
+        transform: rotate(180deg) translateY(-10px);
     }
     100% {
-        transform: scale(2.5) rotate(360deg) translateY(0);
+        transform: rotate(360deg) translateY(0);
     }
 }
+
+
 
 
 
