@@ -58,18 +58,6 @@
     33% { content: "🕳"; }
 }
 
-/* Continua girando e flutuando a pizza */
-.pizza-css:hover {
-    animation: girar-flutuar 2s linear infinite;
-    box-shadow: 0 20px 30px rgba(0,0,0,0.3);
-}
-
-@keyframes girar-flutuar {
-    0% { transform: rotate(0deg) translateY(0); }
-    50% { transform: rotate(180deg) translateY(-10px); }
-    100% { transform: rotate(360deg) translateY(0); }
-}
-
         
     </style>
 </head>
@@ -84,25 +72,28 @@
         <div class="avatar" id="user-initial">L</div>
     </div>
 </header>
-<main id="view-home">
-    <div class="logo-container" onclick="location.reload()">
-    <div class="pizza-css" style="width: 100px; height: 100px; transition: transform 5s ease;">
-        <div class="mio" style="width:18px; height:18px; top:12px; left:25px;"></div>
-        <div class="mio" style="width:18px; height:18px; top:12px; right:20px;"></div>
-        <div class="mio" style="width:18px; height:18px; bottom:18px; left:18px;"></div>
-        <div class="mio" style="width:18px; height:18px; bottom:12px; right:25px;"></div>
-        <div class="queijo" style="width:22px; height:22px; top:38px; left:15px;"></div>
-        <div class="queijo" style="width:22px; height:22px; top:38px; right:15px;"></div>
-        <div class="bolinhapreta" style="width:5px; height:5px; top:8px; left:48px;"></div>
-        <div class="bolinhapreta" style="width:5px; height:5px; bottom:8px; left:48px;"></div>
-        <div class="bolinhapreta" style="width:5px; height:5px; top:48px; left:48px;"></div>
-        <div class="bolinhapreta" style="width:5px; height:5px; top:28px; left:35px;"></div>
-        <div class="bolinhapreta" style="width:5px; height:5px; top:28px; right:35px;"></div>
-        <div class="bolinhapreta" style="width:5px; height:5px; bottom:30px; left:30px;"></div>
-        <!--não sei se ta certo -->
-        <img src="pizza.png" class="pizza-img">
-    <div class="olhos"></div>
-    </div>
+<main id="view-home">  
+    <div class="logo-container" onclick="location.reload()">  
+    <div class="pizza-css" style="width: 100px; height: 100px; transition: transform 5s ease;">  
+        <div class="mio" style="width:18px; height:18px; top:12px; left:25px;"></div>  
+        <div class="mio" style="width:18px; height:18px; top:12px; right:20px;"></div>  
+        <div class="mio" style="width:18px; height:18px; bottom:18px; left:18px;"></div>  
+        <div class="mio" style="width:18px; height:18px; bottom:12px; right:25px;"></div>  
+        <div class="queijo" style="width:22px; height:22px; top:38px; left:15px;"></div>  
+        <div class="queijo" style="width:22px; height:22px; top:38px; right:15px;"></div>  
+        <div class="bolinhapreta" style="width:5px; height:5px; top:8px; left:48px;"></div>  
+        <div class="bolinhapreta" style="width:5px; height:5px; bottom:8px; left:48px;"></div>  
+        <div class="bolinhapreta" style="width:5px; height:5px; top:48px; left:48px;"></div>  
+        <div class="bolinhapreta" style="width:5px; height:5px; top:28px; left:35px;"></div>  
+        <div class="bolinhapreta" style="width:5px; height:5px; top:28px; right:35px;"></div>  
+        <div class="bolinhapreta" style="width:5px; height:5px; bottom:30px; left:30px;"></div>  
+        <!--não sei se ta certo -->  
+        <div class="olhos">  
+                <div class="olho"></div>  
+                <div class="olho"></div>  
+            </div>  <img src="pizza.png" class="pizza-img">    
+    </div>    
+    
     
         <div class="logo-text">
             <span class="red">La</span> <span class="gold">Bela</span><br><span class="green">Pizza</span>
