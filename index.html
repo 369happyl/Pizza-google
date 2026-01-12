@@ -34,57 +34,23 @@
 
 
 /* Olhos escondidos por padrão */
-.olhos {
-  display: none;
-  position: absolute;
-  top: 35px;
-  left: 25px;
-  gap: 6px;
+.pizza-css:hover {
+    animation: girar-flutuar 2s linear infinite;
+    box-shadow: 0 20px 30px rgba(0,0,0,0.3);
 }
 
-/* Cada olho */
-.olho {
-  width: 12px;
-  height: 12px;
-  background: black;
-  border-radius: 50%;
-  position: relative;
+/* Animação de giro + leve levitação */
+@keyframes girar-flutuar {
+    0% {
+        transform: rotate(0deg) translateY(0);
+    }
+    50% {
+        transform: rotate(180deg) translateY(-10px);
+    }
+    100% {
+        transform: rotate(360deg) translateY(0);
+    }
 }
-
-/* Cria pseudo-elemento pra piscar */
-.olho::after {
-  content: "";
-  width: 12px;
-  height: 12px;
-  background: black;
-  border-radius: 50%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  animation: piscar 1.5s infinite;
-}
-
-@keyframes piscar {
-  0%, 66%, 100% { transform: scaleY(1); }   /* olho aberto */
-  33% { transform: scaleY(0.1); }           /* olho fechado */
-}
-
-/* Mostra olhos só quando pizza está clicada */
-.pizza-css:active .olhos,
-.pizza-css:focus .olhos {
-  display: flex;
-}
-
-/* Pizza gira enquanto clicada */
-.pizza-css:active,
-.pizza-css:focus {
-  animation: girar 2s linear infinite;
-}
-
-@keyframes girar {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-                           }
     </style>
 </head>
 <body>
