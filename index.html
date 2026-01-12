@@ -39,6 +39,7 @@
   position: absolute;
   top: 35px;
   left: 25px;
+  gap: 6px;
 }
 
 /* Cada olho */
@@ -47,26 +48,43 @@
   height: 12px;
   background: black;
   border-radius: 50%;
-  margin-right: 8px;
-  display: inline-block;
+  position: relative;
 }
 
-/* Quando pizza é clicada/focada: gira e mostra os olhos */
-.pizza-css:active,
-.pizza-css:focus {
-  animation: girar 2s linear infinite;
+/* Cria pseudo-elemento pra piscar */
+.olho::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: black;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: piscar 1.5s infinite;
 }
 
+@keyframes piscar {
+  0%, 66%, 100% { transform: scaleY(1); }   /* olho aberto */
+  33% { transform: scaleY(0.1); }           /* olho fechado */
+}
+
+/* Mostra olhos só quando pizza está clicada */
 .pizza-css:active .olhos,
 .pizza-css:focus .olhos {
   display: flex;
 }
 
-/* Animação de giro */
+/* Pizza gira enquanto clicada */
+.pizza-css:active,
+.pizza-css:focus {
+  animation: girar 2s linear infinite;
+}
+
 @keyframes girar {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
-}
+                           }
     </style>
 </head>
 <body>
