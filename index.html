@@ -60,14 +60,23 @@
 }
 
 
+/*dark*/
+body.dark {
+  background-color: #121212;
+  color: #e0e0e0;
+}
 
-
+body.dark a {
+  color: #bb86fc;
+}
 
     </style>
 </head>
 <body>
 
 <header>
+    <!--h!-->
+    <button onclick="document.body.classList.toggle('dark')">Dark Mode</button>
     <a onclick="mostrarCardapioSimples()">Cardápio</a> 
     <a onclick="mostrarNossasPizzasCompleto()">Nossas Pizzas</a>
     <button class="btn-login" id="login-trigger">Entrar</button>
